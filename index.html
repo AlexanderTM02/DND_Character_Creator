@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D&D Character Creator</title>
+</head>
+<body>
+    <h1>D&D Character Creator</h1>
+    <form id="characterForm">
+        <label for="charName">Character Name:</label>
+        <input type="text" id="charName" name="charName" required>
+
+        <label for="charRace">Race:</label>
+        <select id="charRace" name="charRace">
+            <option value="human">Human</option>
+            <option value="elf">Elf</option>
+            <option value="dwarf">Dwarf</option>
+            <!-- Add other race options -->
+        </select>
+
+        <label for="charClass">Class:</label>
+        <select id="charClass" name="charClass">
+            <option value="fighter">Fighter</option>
+            <option value="wizard">Wizard</option>
+            <option value="rogue">Rogue</option>
+            <!-- Add other class options -->
+        </select>
+
+        <label for="charLevel">Level:</label>
+        <input type="number" id="charLevel" name="charLevel" min="1" max="20" value="1" required> <br>
+
+        <label for="charAllignment">Allignment:</label>
+        <select id="charAllignment" name="charAllignment">
+            <option value="Lawful Good">Lawful Good</option>
+            <option value="Neutral Good">Neutral Good</option>
+            <option value="Chaotic Good">Chaotic Good</option>
+            <option value="Lawful Neutral">Lawful Neutral</option>
+            <option value="Neutral Neutral">Neutral Neutral</option>
+            <option value="Chaotic Neutral">Chaotic Neutral</option>
+            <option value="Lawful Evil">Lawful Evil</option>
+            <option value="Neutral Evil">Neutral Evil</option>
+            <option value="Chaotic Evil">Chaotic Evil</option>
+             <!-- Add other Allignment options -->
+        </select>
+
+        <label for="charBackground">Background:</label>
+        <select id="charBackground" name="charBackground">
+            <option value="Acolyte">Acolyte</option>
+        </select>
+
+        
+
+        <button type="button" onclick="generateCharacter()">Generate Character</button>
+    </form>
+
+    <div id="characterResult"></div>
+
+    <script src="races.js"></script>
+    <script src="classes.js"></script>
+    <script src="characterCreator.js"></script>
+</body>
+</html>
