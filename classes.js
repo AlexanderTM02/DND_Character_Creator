@@ -5,7 +5,8 @@ function getClassStats(charClass){
     // Adjust stats based on the selected class
     switch (charClass) {
         case 'fighter':
-            classStats = {};
+            let fighterStatBonusSelect = document.getElementById('charClassSkill');
+            let fighterStatBonus = fighterStatBonusSelect.options[fighterStatBonusSelect.selectedIndex].value;
             break;
         case 'wizard':
             classStats = {};

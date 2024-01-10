@@ -25,8 +25,9 @@
         </select>
     
         <div id="humanStatBonus" class="hidden">
-            <label for="charStatBonus">Stat Bonus:</label>
+            <label for="charStatBonus">Racial Stat Bonus:</label>
             <select id="charStatBonus" name="charStatBonus">
+                <option value="">==Select Stat==</option>
                 <option value="strength">Strength</option>
                 <option value="dexterity">Dexterity</option>
                 <option value="constitution">Constitution</option>
@@ -53,13 +54,142 @@
 
     <div>
         <label for="charClass">Class:</label>
-        <select id="charClass" name="charClass">
+        <select id="charClass" name="charClass" onchange="showClassSkillProficiency()">
             <option value="">==Select Class==</option>
             <option value="fighter">Fighter</option>
             <option value="wizard">Wizard</option>
             <option value="rogue">Rogue</option>
             <!-- Add other class options -->
         </select>
+
+        <!-- Add class-specific skill proficiencies -->
+        <div id="classSkillProficiencyFighter" class="hidden">
+            <label for="charClassSkill">Class Skill Proficiency (Pick two):</label>
+            <div>
+                <input type="checkbox" id="acrobatics" name="charClassSkill" value="acrobatics">
+                <label for="acrobatics">Acrobatics</label>
+            </div>
+            <div>
+                <input type="checkbox" id="animalHandling" name="charClassSkill" value="animalHandling">
+                <label for="animalHandling">Animal Handling</label>
+            </div>
+            <div>
+                <input type="checkbox" id="athletics" name="charClassSkill" value="athletics">
+                <label for="athletics">Athletics</label>
+            </div>
+            <div>
+                <input type="checkbox" id="history" name="charClassSkill" value="history">
+                <label for="history">History</label>
+            </div>
+            <div>
+                <input type="checkbox" id="insight" name="charClassSkill" value="insight">
+                <label for="insight">Insight</label>
+            </div>
+            <div>
+                <input type="checkbox" id="intimidation" name="charClassSkill" value="intimidation">
+                <label for="intimidation">Intimidation</label>
+            </div>
+            <div>
+                <input type="checkbox" id="perception" name="charClassSkill" value="perception">
+                <label for="perception">Perception</label>
+            </div>
+            <div>
+                <input type="checkbox" id="survival" name="charClassSkill" value="survival">
+                <label for="survival">Survival</label>
+            </div>
+            <!-- Add other class-specific skill options -->
+        </div>
+
+        <div id="classSkillProficiencyWizard" class="hidden">
+            <label for="charClassSkill">Class Skill Proficiency (Pick two):</label>
+            <div>
+                <input type="checkbox" id="arcana" name="charClassSkill" value="arcana">
+                <label for="arcana">Arcana</label>
+            </div>
+            <div>
+                <input type="checkbox" id="history" name="charClassSkill" value="history">
+                <label for="history">History</label>
+            </div>
+            <div>
+                <input type="checkbox" id="insight" name="charClassSkill" value="insight">
+                <label for="insight">Insight</label>
+            </div>
+            <div>
+                <input type="checkbox" id="investigation" name="charClassSkill" value="investigation">
+                <label for="investigation">Investigation</label>
+            </div>
+            <div>
+                <input type="checkbox" id="medicine" name="charClassSkill" value="medicine">
+                <label for="medicine">Medicine</label>
+            </div>
+            <div>
+                <input type="checkbox" id="religion" name="charClassSkill" value="religion">
+                <label for="religion">Religion</label>
+            </div>
+            <div>
+                <input type="checkbox" id="survival" name="charClassSkill" value="survival">
+                <label for="survival">Survival</label>
+            </div>
+            <!-- Add other class-specific skill options -->
+        </div>
+
+        <div id="classSkillProficiencyRogue" class="hidden">
+            <label for="charClassSkill">Class Skill Proficiency (Pick two):</label>
+            <div>
+                <input type="checkbox" id="acrobatics" name="charClassSkill" value="acrobatics">
+                <label for="acrobatics">Acrobatics</label>
+            </div>
+            <div>
+                <input type="checkbox" id="athletics" name="charClassSkill" value="athletics">
+                <label for="athletics">Athletics</label>
+            </div>
+            <div>
+                <input type="checkbox" id="deception" name="charClassSkill" value="deception">
+                <label for="deception">Deception</label>
+            </div>
+            <div>
+                <input type="checkbox" id="insight" name="charClassSkill" value="insight">
+                <label for="insight">Insight</label>
+            </div>
+            <div>
+                <input type="checkbox" id="investigation" name="charClassSkill" value="investigation">
+                <label for="investigation">Investigation</label>
+            </div>
+            <div>
+                <input type="checkbox" id="perception" name="charClassSkill" value="perception">
+                <label for="perception">Perception</label>
+            </div>
+            <div>
+                <input type="checkbox" id="stealth" name="charClassSkill" value="stealth">
+                <label for="stealth">Stealth</label>
+            </div>
+            <div>
+                <input type="checkbox" id="sleightOfHand" name="charClassSkill" value="sleightOfHand">
+                <label for="sleightOfHand">Sleight of Hand</label>
+            </div>
+            <!-- Add other class-specific skill options -->
+        </div>
+
+        <script type="text/javascript">
+            function showClassSkillProficiency() {
+                var classSelect = document.getElementById("charClass");
+                var skillProficiencyFighterDiv = document.getElementById("classSkillProficiencyFighter");
+                var skillProficiencyWizardDiv = document.getElementById("classSkillProficiencyWizard");
+                var skillProficiencyRogueDiv = document.getElementById("classSkillProficiencyRogue");
+
+                skillProficiencyFighterDiv.classList.add("hidden");
+                skillProficiencyWizardDiv.classList.add("hidden");
+                skillProficiencyRogueDiv.classList.add("hidden");
+
+                if (classSelect.value === "fighter") {
+                    skillProficiencyFighterDiv.classList.remove("hidden");
+                } else if (classSelect.value === "wizard") {
+                    skillProficiencyWizardDiv.classList.remove("hidden");
+                } else if (classSelect.value === "rogue") {
+                    skillProficiencyRogueDiv.classList.remove("hidden");
+                }
+            }
+        </script>
     </div>
 
     <div>
@@ -125,6 +255,7 @@
 
     
         <button type="button" onclick="generateCharacter()">Generate Character</button>
+
     </form>
 
     <div id="characterResult"></div>
