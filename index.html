@@ -3,35 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>D&D Character Creator</title>
 </head>
 <body>
     <h1>D&D Character Creator</h1>
-    <form id="characterForm">
-        <label for="charName">Character Name:</label>
-        <input type="text" id="charName" name="charName" required>
-
+    <div>
+        <form id="characterForm">
+            <label for="charName">Character Name:</label>
+            <input type="text" id="charName" name="charName" required>
+    </div>
+    
+    <div>
         <label for="charRace">Race:</label>
-        <select id="charRace" name="charRace">
+        <select id="charRace" name="charRace" onchange="showRaceStatBonus()">
+            <option value="">==Select Race==</option>
             <option value="human">Human</option>
             <option value="elf">Elf</option>
             <option value="dwarf">Dwarf</option>
             <!-- Add other race options -->
         </select>
+    
+        <div id="humanStatBonus" class="hidden">
+            <label for="charStatBonus">Stat Bonus:</label>
+            <select id="charStatBonus" name="charStatBonus">
+                <option value="strength">Strength</option>
+                <option value="dexterity">Dexterity</option>
+                <option value="constitution">Constitution</option>
+                <option value="intelligence">Intelligence</option>
+                <option value="wisdom">Wisdom</option>
+                <option value="charisma">Charisma</option>
+            </select>
+        </div>
 
+        <script type="text/javascript">
+            function showRaceStatBonus() {
+                var raceSelect = document.getElementById("charRace");
+                var statBonusDiv = document.getElementById("humanStatBonus");
+
+                if (raceSelect.value === "human") {
+                    statBonusDiv.classList.remove("hidden");
+                } else {
+                    statBonusDiv.classList.add("hidden");
+                }
+            }
+        </script>
+        
+    </div>
+
+    <div>
         <label for="charClass">Class:</label>
         <select id="charClass" name="charClass">
+            <option value="">==Select Class==</option>
             <option value="fighter">Fighter</option>
             <option value="wizard">Wizard</option>
             <option value="rogue">Rogue</option>
             <!-- Add other class options -->
         </select>
+    </div>
 
+    <div>
         <label for="charLevel">Level:</label>
         <input type="number" id="charLevel" name="charLevel" min="1" max="20" value="1" required> <br>
+    </div>
 
+    <div>
         <label for="charAllignment">Allignment:</label>
         <select id="charAllignment" name="charAllignment">
+            <option value="">==Select Allignment==</option>
             <option value="Lawful Good">Lawful Good</option>
             <option value="Neutral Good">Neutral Good</option>
             <option value="Chaotic Good">Chaotic Good</option>
@@ -43,21 +82,55 @@
             <option value="Chaotic Evil">Chaotic Evil</option>
              <!-- Add other Allignment options -->
         </select>
-
+    </div>
+    <div>
         <label for="charBackground">Background:</label>
         <select id="charBackground" name="charBackground">
+            <option value="">==Select Background==</option>
             <option value="Acolyte">Acolyte</option>
         </select>
+    </div>
 
-        
 
+    <div>
+        <label for="charStatStrength">Strength:</label>
+        <input type="number" id="charStatStrength" name="charStatStrength" min="1" max="20" required>
+    </div>
+
+    <div>
+        <label for="charStatDexterity">Dexterity:</label>
+        <input type="number" id="charStatDexterity" name="charStatDexterity" min="1" max="20" required>
+    </div>
+
+    <div>
+        <label for="charStatConstitution">Constitution:</label>
+        <input type="number" id="charStatConstitution" name="charStatConstitution" min="1" max="20" required>
+    </div>
+
+    <div>
+        <label for="charStatIntelligence">Intelligence:</label>
+        <input type="number" id="charStatIntelligence" name="charStatIntelligence" min="1" max="20" required>
+    </div>
+
+    <div>
+        <label for="charStatWisdom">Wisdom:</label>
+        <input type="number" id="charStatWisdom" name="charStatWisdom" min="1" max="20" required>
+    </div>
+
+    <div>
+        <label for="charStatCharisma">Charisma:</label>
+        <input type="number" id="charStatCharisma" name="charStatCharisma" min="1" max="20" required>
+    </div>
+
+
+    
         <button type="button" onclick="generateCharacter()">Generate Character</button>
     </form>
 
     <div id="characterResult"></div>
 
-    <script src="races.js"></script>
-    <script src="classes.js"></script>
-    <script src="characterCreator.js"></script>
+    <script type="text/javascript" src="races.js"></script>
+    <script type="text/javascript" src="classes.js"></script>
+    <script type="text/javascript" src="characterCreator.js"></script>
 </body>
 </html>

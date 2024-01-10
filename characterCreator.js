@@ -7,18 +7,25 @@ function generateCharacter() {
     const charBackground = document.getElementById('charBackground').value;
     const charLevel = parseInt(document.getElementById('charLevel').value, 10);
 
+    const charStatStrength = parseInt(document.getElementById('charStatStrength').value, 10);
+    const charStatDexterity = parseInt(document.getElementById('charStatDexterity').value, 10);
+    const charStatConstitution = parseInt(document.getElementById('charStatConstitution').value, 10);
+    const charStatIntelligence = parseInt(document.getElementById('charStatIntelligence').value, 10);
+    const charStatWisdom = parseInt(document.getElementById('charStatWisdom').value, 10);
+    const charStatCharisma = parseInt(document.getElementById('charStatCharisma').value, 10);
+
    // Use functions from races.js and classes.js
    const raceStats = getRaceStats(charRace);
    const classStats = getClassStats(charClass);
     
     // Calculate final stats based on race, class, and level
     const finalStats = {
-        strength: (raceStats.strength || 0) + (classStats.strength || 0),
-        dexterity: (raceStats.dexterity || 0) + (classStats.dexterity || 0),
-        constitution: (raceStats.constitution || 0) + (classStats.constitution || 0),
-        intelligence: (raceStats.intelligence || 0) + (classStats.intelligence || 0),
-        wisdom: (raceStats.wisdom || 0) + (classStats.wisdom || 0),
-        charisma: (raceStats.charisma || 0) + (classStats.charisma || 0),
+        strength: (raceStats.strength || 0) + (classStats.strength || 0) + charStatStrength,
+        dexterity: (raceStats.dexterity || 0) + (classStats.dexterity || 0) + charStatDexterity,
+        constitution: (raceStats.constitution || 0) + (classStats.constitution || 0) + charStatConstitution,
+        intelligence: (raceStats.intelligence || 0) + (classStats.intelligence || 0) + charStatIntelligence,
+        wisdom: (raceStats.wisdom || 0) + (classStats.wisdom || 0) + charStatWisdom,
+        charisma: (raceStats.charisma || 0) + (classStats.charisma || 0) + charStatCharisma,
     };
 
     // Generate character summary
