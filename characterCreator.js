@@ -16,16 +16,21 @@ function generateCharacter() {
 
    // Use functions from races.js and classes.js
    const raceStats = getRaceStats(charRace);
-   const classStats = getClassStats(charClass);
+   const classProficiencies = getClassProficiencies(charClass, charLevel);
+
+   
+   const racialTraits = getRacialTraits(charRace);
+   const classFeatures = getClassFeatures(charClass);
+
     
     // Calculate final stats based on race, class, and level
     const finalStats = {
-        strength: (raceStats.strength || 0) + (classStats.strength || 0) + charStatStrength,
-        dexterity: (raceStats.dexterity || 0) + (classStats.dexterity || 0) + charStatDexterity,
-        constitution: (raceStats.constitution || 0) + (classStats.constitution || 0) + charStatConstitution,
-        intelligence: (raceStats.intelligence || 0) + (classStats.intelligence || 0) + charStatIntelligence,
-        wisdom: (raceStats.wisdom || 0) + (classStats.wisdom || 0) + charStatWisdom,
-        charisma: (raceStats.charisma || 0) + (classStats.charisma || 0) + charStatCharisma,
+        strength: (raceStats.strength || 0) + charStatStrength,
+        dexterity: (raceStats.dexterity || 0) + charStatDexterity,
+        constitution: (raceStats.constitution || 0) + charStatConstitution,
+        intelligence: (raceStats.intelligence || 0) + charStatIntelligence,
+        wisdom: (raceStats.wisdom || 0) + charStatWisdom,
+        charisma: (raceStats.charisma || 0) + charStatCharisma,
     };
 
     const abilityScoreModifiers = {
@@ -38,24 +43,24 @@ function generateCharacter() {
     };
 
     const skillModifiers = {
-        acrobatics: abilityScoreModifiers.dexterity,
-        animalHandling: abilityScoreModifiers.wisdom,
-        arcana: abilityScoreModifiers.intelligence,
-        athletics: abilityScoreModifiers.strength,
-        deception: abilityScoreModifiers.charisma,
-        history: abilityScoreModifiers.intelligence,
-        insight: abilityScoreModifiers.wisdom,
-        intimidation: abilityScoreModifiers.charisma,
-        investigation: abilityScoreModifiers.intelligence,
-        medicine: abilityScoreModifiers.wisdom,
-        nature: abilityScoreModifiers.intelligence,
-        perception: abilityScoreModifiers.wisdom,
-        performance: abilityScoreModifiers.charisma,
-        persuasion: abilityScoreModifiers.charisma,
-        religion: abilityScoreModifiers.intelligence,
-        sleightOfHand: abilityScoreModifiers.dexterity,
-        stealth: abilityScoreModifiers.dexterity,
-        survival: abilityScoreModifiers.wisdom,
+        acrobatics: abilityScoreModifiers.dexterity + (classProficiencies.acrobatics || 0),
+        animalHandling: abilityScoreModifiers.wisdom + (classProficiencies.animalHandling || 0),
+        arcana: abilityScoreModifiers.intelligence + (classProficiencies.arcana || 0),
+        athletics: abilityScoreModifiers.strength + (classProficiencies.athletics || 0),
+        deception: abilityScoreModifiers.charisma + (classProficiencies.deception || 0),
+        history: abilityScoreModifiers.intelligence + (classProficiencies.history || 0),
+        insight: abilityScoreModifiers.wisdom + (classProficiencies.insight || 0),
+        intimidation: abilityScoreModifiers.charisma + (classProficiencies.intimidation || 0),
+        investigation: abilityScoreModifiers.intelligence + (classProficiencies.investigation || 0),
+        medicine: abilityScoreModifiers.wisdom + (classProficiencies.medicine || 0),
+        nature: abilityScoreModifiers.intelligence + (classProficiencies.nature || 0),
+        perception: abilityScoreModifiers.wisdom + (classProficiencies.perception || 0),
+        performance: abilityScoreModifiers.charisma + (classProficiencies.performance || 0),
+        persuasion: abilityScoreModifiers.charisma + (classProficiencies.persuasion || 0),
+        religion: abilityScoreModifiers.intelligence + (classProficiencies.religion || 0),
+        sleightOfHand: abilityScoreModifiers.dexterity + (classProficiencies.sleightOfHand || 0),
+        stealth: abilityScoreModifiers.dexterity + (classProficiencies.stealth || 0),
+        survival: abilityScoreModifiers.wisdom + (classProficiencies.survival || 0),
     };
 
     // Generate character summary
@@ -64,11 +69,12 @@ function generateCharacter() {
         <h2>Character Summary</h2>
         <p><strong>Name:</strong> ${charName}<br>
         <strong>Race:</strong> ${charRace}<br>
-        <strong>Allignment:</strong> ${charAllignment}<br>
         <strong>Background:</strong> ${charBackground}<br>
-        <strong>Class:</strong> ${charClass}<br>
-        <strong>Level:</strong> ${charLevel}<br>
-        
+        <strong>Class:</strong> ${charClass} ${charLevel}<br>
+        <strong>Allignment:</strong> ${charAllignment}<br>
+    `;
+
+    const writeAbilityScores = `
         <br><strong>Ability Scores & Abilities:</strong></p>
         <ul>
             <li>Strength: ${finalStats.strength} (${abilityScoreModifiers.strength >= 0 ? '+' : ''}${abilityScoreModifiers.strength})</li>
@@ -78,7 +84,9 @@ function generateCharacter() {
             <li>Wisdom: ${finalStats.wisdom} (${abilityScoreModifiers.wisdom >= 0 ? '+' : ''}${abilityScoreModifiers.wisdom})</li>
             <li>Charisma: ${finalStats.charisma} (${abilityScoreModifiers.charisma >= 0 ? '+' : ''}${abilityScoreModifiers.charisma})</li>
         </ul>
+    `;
 
+    const writeCharSkills = `
         <br><strong>Skills:</strong></p>
         <ul>
             <li>Acrobatics: ${skillModifiers.acrobatics >= 0 ? '+' : ''}${skillModifiers.acrobatics}</li>
@@ -103,8 +111,36 @@ function generateCharacter() {
         </ul>
     `;
 
+    const writeClassFeatures = `
+    <br><strong>Class Features:</strong></p>
+        <ul>
+            ${classFeatures}
+        </ul>
+    
+    `;
+
+    const writeRacialTraits = `
+    
+    <br><strong>Racial Traits:</strong></p>
+        <ul>
+            ${racialTraits}
+        </ul>
+
+    `;
+
+
     // Display character summary
     document.getElementById('characterResult').innerHTML = characterSummary;
+
+    document.getElementById('abilityScores').innerHTML = writeAbilityScores;
+
+    document.getElementById('charSkills').innerHTML = writeCharSkills;
+    
+    document.getElementById('classFeatures').innerHTML = writeClassFeatures;
+
+    document.getElementById('racialTraits').innerHTML = writeRacialTraits;
+
+
 }
 
 function getAbilityScoreModifier(score) {
