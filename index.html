@@ -3,266 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <script src="tabs.js" defer></script>
-    <title>D&D Character Creator</title>
+    <link rel="stylesheet" href="homepage.css">
+    <title>Welcome</title>
 </head>
 <body>
-    <h1>D&D Character Creator</h1>
-    <form id="characterForm">
-        <div>
-            <div class="mainForm">
-                <div class="charNameForm">
-                        <label for="charName">Character Name:</label>
-                        <input type="text" id="charName" name="charName" required>
-                </div>
 
-                <div>
-                    <label for="charRace" class="raceForm">Race:</label>
-                    <select id="charRace" name="charRace" onchange="showRaceStatBonus()">
-                        <option value="">==Select Race==</option>
-                        <option value="human">Human</option>
-                        <option value="elf">Elf</option>
-                        <option value="dwarf">Dwarf</option>
-                        <!-- Add other race options -->
-                    </select>
-                </div>
-            
-                <div>
-                    <label for="charClass" class="classForm">Class:</label>
-                    <select id="charClass" name="charClass" onchange="showClassSkillProficiency()">
-                        <option value="">==Select Class==</option>
-                        <option value="fighter">Fighter</option>
-                        <option value="wizard">Wizard</option>
-                        <option value="rogue">Rogue</option>
-                        <!-- Add other class options -->
-                    </select>
-                
-                    <!-- Add class-specific skill proficiencies -->
-                    <div id="classSkillProficiencyFighter" class="hidden">
-                        <label for="charClassSkill">Class Skill Proficiency (Pick two):</label>
-                        <div>
-                            <input type="checkbox" id="acrobatics" name="charClassSkill" value="acrobatics">
-                            <label for="acrobatics">Acrobatics</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="animalHandling" name="charClassSkill" value="animalHandling">
-                            <label for="animalHandling">Animal Handling</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="athletics" name="charClassSkill" value="athletics">
-                            <label for="athletics">Athletics</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="history" name="charClassSkill" value="history">
-                            <label for="history">History</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="insight" name="charClassSkill" value="insight">
-                            <label for="insight">Insight</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="intimidation" name="charClassSkill" value="intimidation">
-                            <label for="intimidation">Intimidation</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="perception" name="charClassSkill" value="perception">
-                            <label for="perception">Perception</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="survival" name="charClassSkill" value="survival">
-                            <label for="survival">Survival</label>
-                        </div>
-                        <!-- Add other class-specific skill options -->
-                    </div>
-                
-                    <div id="classSkillProficiencyWizard" class="hidden">
-                        <label for="charClassSkill">Class Skill Proficiency (Pick two):</label>
-                        <div>
-                            <input type="checkbox" id="arcana" name="charClassSkill" value="arcana">
-                            <label for="arcana">Arcana</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="history" name="charClassSkill" value="history">
-                            <label for="history">History</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="insight" name="charClassSkill" value="insight">
-                            <label for="insight">Insight</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="investigation" name="charClassSkill" value="investigation">
-                            <label for="investigation">Investigation</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="medicine" name="charClassSkill" value="medicine">
-                            <label for="medicine">Medicine</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="religion" name="charClassSkill" value="religion">
-                            <label for="religion">Religion</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="survival" name="charClassSkill" value="survival">
-                            <label for="survival">Survival</label>
-                        </div>
-                        <!-- Add other class-specific skill options -->
-                    </div>
-                
-                    <div id="classSkillProficiencyRogue" class="hidden">
-                        <label for="charClassSkill">Class Skill Proficiency (Pick two):</label>
-                        <div>
-                            <input type="checkbox" id="acrobatics" name="charClassSkill" value="acrobatics">
-                            <label for="acrobatics">Acrobatics</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="athletics" name="charClassSkill" value="athletics">
-                            <label for="athletics">Athletics</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="deception" name="charClassSkill" value="deception">
-                            <label for="deception">Deception</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="insight" name="charClassSkill" value="insight">
-                            <label for="insight">Insight</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="investigation" name="charClassSkill" value="investigation">
-                            <label for="investigation">Investigation</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="perception" name="charClassSkill" value="perception">
-                            <label for="perception">Perception</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="stealth" name="charClassSkill" value="stealth">
-                            <label for="stealth">Stealth</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="sleightOfHand" name="charClassSkill" value="sleightOfHand">
-                            <label for="sleightOfHand">Sleight of Hand</label>
-                        </div>
-                        <!-- Add other class-specific skill options -->
-                    </div>
-                
-                    <script type="text/javascript">
-                        function showClassSkillProficiency() {
-                            var classSelect = document.getElementById("charClass");
-                            var skillProficiencyFighterDiv = document.getElementById("classSkillProficiencyFighter");
-                            var skillProficiencyWizardDiv = document.getElementById("classSkillProficiencyWizard");
-                            var skillProficiencyRogueDiv = document.getElementById("classSkillProficiencyRogue");
-                        
-                            skillProficiencyFighterDiv.classList.add("hidden");
-                            skillProficiencyWizardDiv.classList.add("hidden");
-                            skillProficiencyRogueDiv.classList.add("hidden");
-                        
-                            if (classSelect.value === "fighter") {
-                                skillProficiencyFighterDiv.classList.remove("hidden");
-                            } else if (classSelect.value === "wizard") {
-                                skillProficiencyWizardDiv.classList.remove("hidden");
-                            } else if (classSelect.value === "rogue") {
-                                skillProficiencyRogueDiv.classList.remove("hidden");
-                            }
-                        }
-                    </script>
-                </div>
-            
-                <div class="levelForm">
-                    <label for="charLevel">Level:</label>
-                    <input type="number" id="charLevel" name="charLevel" min="1" max="20" value="1" required> <br>
-                </div>
-            </div>
-        
-            <div class="flavor">
-                <div>
-                    <label for="charAllignment">Allignment:</label>
-                    <select id="charAllignment" name="charAllignment">
-                        <option value="">==Select Allignment==</option>
-                        <option value="Lawful Good">Lawful Good</option>
-                        <option value="Neutral Good">Neutral Good</option>
-                        <option value="Chaotic Good">Chaotic Good</option>
-                        <option value="Lawful Neutral">Lawful Neutral</option>
-                        <option value="Neutral Neutral">Neutral Neutral</option>
-                        <option value="Chaotic Neutral">Chaotic Neutral</option>
-                        <option value="Lawful Evil">Lawful Evil</option>
-                        <option value="Neutral Evil">Neutral Evil</option>
-                        <option value="Chaotic Evil">Chaotic Evil</option>
-                         <!-- Add other Allignment options -->
-                    </select>
-                </div>
-                <div>
-                    <label for="charBackground">Background:</label>
-                    <select id="charBackground" name="charBackground">
-                        <option value="">==Select Background==</option>
-                        <option value="Acolyte">Acolyte</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="characterStats">
-                <div>
-                    <label for="charStatStrength">Strength:</label>
-                    <input type="number" id="charStatStrength" name="charStatStrength" min="1" max="20" required>
-                </div>
-            
-                <div>
-                    <label for="charStatDexterity">Dexterity:</label>
-                    <input type="number" id="charStatDexterity" name="charStatDexterity" min="1" max="20" required>
-                </div>
-            
-                <div>
-                    <label for="charStatConstitution">Constitution:</label>
-                    <input type="number" id="charStatConstitution" name="charStatConstitution" min="1" max="20" required>
-                </div>
-            
-                <div>
-                    <label for="charStatIntelligence">Intelligence:</label>
-                    <input type="number" id="charStatIntelligence" name="charStatIntelligence" min="1" max="20" required>
-                </div>
-            
-                <div>
-                    <label for="charStatWisdom">Wisdom:</label>
-                    <input type="number" id="charStatWisdom" name="charStatWisdom" min="1" max="20" required>
-                </div>
-            
-                <div>
-                    <label for="charStatCharisma">Charisma:</label>
-                    <input type="number" id="charStatCharisma" name="charStatCharisma" min="1" max="20" required>
-                </div>
-            </div>
-
-            <button type="button" onclick="generateCharacter()" class="generateButton">Generate Character</button>
-        </div>
-    </form>
-
-    <div id="characterResult" class="charResults"></div>
-
-    <ul class="tabs">
-        <li data-tab-target="#tabAbilityScores" class="active tab">Ability Scores</li>
-        <li data-tab-target="#tabCharSkills" class="tab">Skills</li>
-        <li data-tab-target="#tabRacialTraits" class="tab">Racial Traits</li>
-        <li data-tab-target="#tabClassFeatures" class="tab">Class Features</li>
-    </ul>
-
-    <div class="tab-content">
-
-        <div id="tabAbilityScores" data-tab-content class="active">
-            <div id="abilityScores"></div>
-        </div>
-        <div id="tabCharSkills" data-tab-content>
-            <div id="charSkills"></div>
-        </div>
-        <div id="tabRacialTraits" data-tab-content>
-            <div id="racialTraits"></div>
-        </div>
-        <div id="tabClassFeatures" data-tab-content>
-            <div id="classFeatures"></div>
-        </div>
+    <div class="logo">
+        <img src="assets/DnD-Logo.png" alt="D&D Logo" style="max-width: 50%; height: auto;">
     </div>
 
-    <script type="text/javascript" src="races.js"></script>
-    <script type="text/javascript" src="classes.js"></script>
-    <script type="text/javascript" src="characterCreator.js"></script>
+    <div class="welcome">
+        <h1>Welcome to the Quick D&D Character Creator!</h1>
+    </div>
+
+    <div class="dnd-img1">
+        <img src="assets/dnd-img1.jpg" alt="D&D image" style="max-width: 50%; height: auto;">
+    </div>
+
+    <div class="info1">
+        <h2>What is D&D?</h2>
+        <p>Dungeons & Dragons (D&D) is an imaginative tabletop role-playing game where you <br>
+        create a character and embark on epic adventures in a fantasy world. But creating a <br>
+        character can be a bit daunting, especially for beginners.</p>
+    </div>
+
+
+    <div class="info2">
+        <h2>What is the Quick D&D Character Creator?</h2>
+        <p>That's where our website comes in handy! We've designed this quick and easy-to-use <br>
+        D&D Character Creator to help you effortlessly build your own unique character. <br>
+        Whether you're a seasoned player or a newcomer, our tool streamlines the process, <br>
+        making character creation a breeze.</p>
+    </div>
+
+    <div>
+    <p>Get started now and dive into the magical realm of Dungeons & Dragons with your <br>
+        personalized character!</p>
+    </div>
+
+    <div class="refQCC">
+        <a href="QCC.html">
+            <button class="buttonQCC">GO TO CHARACTER CREATOR</button>
+        </a>
+    </div>
+    
 </body>
 </html>

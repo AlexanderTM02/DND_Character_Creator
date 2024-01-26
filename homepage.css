@@ -1,0 +1,71 @@
+body{
+    background: #383838;
+    background: -moz-radial-gradient(center, #383838 0%, #404040 0%, #212121 100%);
+    background: -webkit-radial-gradient(center, #383838 0%, #404040 0%, #212121 100%);
+    background: radial-gradient(ellipse at center, #383838 0%, #404040 0%, #212121 100%);
+}
+
+h1{
+    text-align: center;
+    color: white; /* Added font color */
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 70px;
+
+}
+
+h2 {
+    text-align: center;
+    color: white; /* Added font color */
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 40px;
+
+}
+
+p{
+    text-align: center;
+    color: white; /* Added font color */
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: larger;
+}   
+
+.logo {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh;
+}
+
+.dnd-img1 { 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+}
+
+.info1 {
+    margin-top: 10%;
+    margin-bottom: 30%;
+}
+
+.info2 {
+    margin-top: 20%;
+    margin-bottom: 30%;
+}
+
+.info3 {
+    margin-top: 20%;
+    margin-bottom: 30%;
+}
+
+.refQCC {
+    display: flex; 
+    justify-content: center;
+    margin-bottom: 25%;
+}
+.buttonQCC   {
+    font-size: 24px; 
+    padding: 10px 20px;
+}

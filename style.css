@@ -10,15 +10,22 @@
   display: none;
 }
 
-
-
 h1 {
   text-align: center;
+  color: white; /* Added font color */
 }
 
 body {
   background-color: #f1f1f1;
   font-family: Arial, Helvetica, sans-serif;
+  background: #383838;
+  background: -moz-radial-gradient(center, #383838 0%, #404040 0%, #212121 100%);
+  background: -webkit-radial-gradient(center, #383838 0%, #404040 0%, #212121 100%);
+  background: radial-gradient(ellipse at center, #383838 0%, #404040 0%, #212121 100%);
+}
+
+label {
+  color: white;
 }
 
 .mainForm {
@@ -150,4 +157,10 @@ body {
   border: 1px solid black;
   border-top: none;
   margin-bottom: 20%;
+}
+
+.results {
+  margin-top: 5%;
+  background-color: white;
+  border-radius: 10px;
 }
